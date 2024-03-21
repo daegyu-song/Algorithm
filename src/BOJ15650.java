@@ -12,9 +12,7 @@ public class BOJ15650 {
             for (int i = 1; i <= M; i++) sb.append(selected[i]).append(" ");
             sb.append("\n");
         } else {
-            int start = selected[k - 1] + 1;
-            if (start == 0) start = 1;
-            for (int i = start; i <= N; i++) {
+            for (int i = selected[k - 1] + 1; i <= N; i++) {
                 selected[k] = i;
                 solution(k + 1);
                 selected[k] = 0;
