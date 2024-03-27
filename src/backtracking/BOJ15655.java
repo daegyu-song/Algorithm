@@ -1,0 +1,45 @@
+package backtracking;
+
+import java.util.*;
+import java.io.*;
+
+public class BOJ15655 {
+    static int N, M;
+    static int[] numbers;
+    static int[] selected;
+
+    static StringBuilder sb = new StringBuilder();
+
+    static void solution(int depth) {
+        if (depth == M) {
+            for (int i : selected) sb.append(i).append(" ");
+            sb.append("\n");
+        } else {
+            for (int i = 0; i < N; i++) {
+                if (depth == 0 || numbers[i] > selected[depth - 1]) {
+                    selected[depth] = numbers[i];
+                    solution(depth + 1);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        numbers = new int[N];
+        selected = new int[M];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(numbers);
+
+        solution(0);
+        System.out.println(sb.toString());
+    }
+}
