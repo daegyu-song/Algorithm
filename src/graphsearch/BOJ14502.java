@@ -51,7 +51,6 @@ public class BOJ14502 {
 
     static void recur(int depth) {
         if (depth == 3) {
-            // fieldCopy 모든 경우 dfs
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     if (visit[i][j]) continue;

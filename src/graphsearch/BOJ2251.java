@@ -7,13 +7,14 @@ class State {
     int[] x;
 
     public State(int[] x) {
-        this.x = new int[] {x[0], x[1], x[2]};
+        this.x = new int[3];
+        for (int i = 0; i < 3; i++) this.x[i] = x[i];
     }
 
     State move(int from, int to, int[] limit) {
-        int[] nx = {x[0], x[1], x[2]};
+        int[] nx = new int[] {x[0], x[1], x[2]};
         if (x[from] + x[to] >= limit[to]) {
-            nx[from] -= limit[to] - nx[to];
+            nx[from] -= limit[to] - x[to];
             nx[to] = limit[to];
         } else {
             nx[to] += nx[from];
@@ -32,9 +33,10 @@ public class BOJ2251 {
     static void input() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        limit = new int[] {Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())};
-        visit = new boolean[201][201][201];
-        possible = new boolean[201];
+        limit = new int[3];
+        for (int i = 0; i < 3; i++) limit[i] = Integer.parseInt(st.nextToken());
+        visit = new boolean[205][205][205];
+        possible = new boolean[205];
     }
 
     static void bfs(int x1, int x2, int x3) {
@@ -45,13 +47,15 @@ public class BOJ2251 {
         while (!que.isEmpty()) {
             State st = que.poll();
             if (st.x[0] == 0) possible[st.x[2]] = true;
+
             for (int from = 0; from < 3; from++) {
                 for (int to = 0; to < 3; to++) {
                     if (from == to) continue;
-                    State nst = st.move(from, to, limit);
-                    if (!visit[nst.x[0]][nst.x[1]][nst.x[2]]) {
-                        que.add(nst);
-                        visit[nst.x[0]][nst.x[1]][nst.x[2]] = true;
+                    State nx = st.move(from, to, limit);
+
+                    if (!visit[nx.x[0]][nx.x[1]][nx.x[2]]) {
+                        visit[nx.x[0]][nx.x[1]][nx.x[2]] = true;
+                        que.add(nx);
                     }
                 }
             }
