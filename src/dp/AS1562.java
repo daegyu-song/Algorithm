@@ -14,17 +14,17 @@ public class AS1562 {
     }
 
     static void pro() {
-        for(int i = 1; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             dy[1][i][1 << i] = 1;
         }
-        for(int i = 2; i< N + 1; i++) {
-            for(int j = 0; j < 10; j++) {
-                for(int k = 0; k < 1024; k++) {
+        for (int i = 2; i< N + 1; i++) {
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < 1024; k++) {
                     int bit = k | (1 << j);
-                    if(j == 0) {
+                    if (j == 0) {
                         dy[i][j][bit] = (dy[i][j][bit] + dy[i - 1][j + 1][k]) % MOD;
                     }
-                    else if(j == 9) {
+                    else if (j == 9) {
                         dy[i][j][bit] = (dy[i][j][bit] + dy[i - 1][j - 1][k]) % MOD;
                     }
                     else {
