@@ -30,8 +30,8 @@ public class BOJ11066 {
 
     static void pro() {
         preprocess();
-        for (int len = 2; len <= K; len ++){
-            for (int i = 1; i <= K - len + 1; i++){
+        for (int len = 2; len <= K; len ++) {
+            for (int i = 1; i <= K - len + 1; i++) {
                 int j = i + len - 1;
                 dy[i][j] = Integer.MAX_VALUE;
                 for (int k = i; k < j; k++){
