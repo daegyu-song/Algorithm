@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class BOJ20166 {
-    static int N, M, K, ansCnt;
+    static int N, M, K;
     static String[] field;
     static int[][] dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {-1, -1}, {1, 1}, {-1, 1}, {1, -1}};
     static Map<String, Integer> map = new HashMap<String, Integer>();
