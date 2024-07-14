@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public class BOJ1261 {
-    static int n, m, ans;
+    static int n, m;
     static int[][] field;
     static boolean[][] visit;
     static int[][] dir = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
