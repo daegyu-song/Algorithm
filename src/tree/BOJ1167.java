@@ -1,7 +1,10 @@
 package tree;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class BOJ1167 {
     static class Info {
@@ -13,9 +16,8 @@ public class BOJ1167 {
         }
     }
 
-    static int v, ans;
+    static int v, ans, node;
     static ArrayList<Info>[] field;
-    static int[] dp;
 
     static void input() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,31 +38,28 @@ public class BOJ1167 {
                 field[x].add(new Info(y, c));
             }
         }
-
-        dp = new int[v + 1];
     }
 
-    static void dfs(int start, int prev) {
+    static void dfs(int start, int prev, int cost) {
+        if (cost > ans) {
+            ans = cost;
+            node = start;
+        }
 
         for (Info info : field[start]) {
-
             int y = info.y;
             int value = info.value;
 
             if (y == prev) continue;
 
-            dfs(y, start);
-            dp[start] = Math.max(dp[y] + value, dp[start]);
+            dfs(y, start, cost + value);
         }
     }
 
     static void pro() {
+        dfs(1, -1, 0);
 
-        dfs(1, -1);
-
-        for (int i : dp) {
-            ans = Math.max(ans, i);
-        }
+        dfs(node, -1, 0);
 
         System.out.println(ans);
     }
