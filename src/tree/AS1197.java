@@ -46,8 +46,6 @@ public class AS1197 {
             pq.add(new Node(a, b, w));
         }
 
-        int total = 0;
-
         while (!pq.isEmpty()) {
             Node node = pq.poll();
 
