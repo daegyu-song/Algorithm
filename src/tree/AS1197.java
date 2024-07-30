@@ -46,10 +46,9 @@ public class AS1197 {
             pq.add(new Node(a, b, w));
         }
 
-        int size = pq.size();
         int total = 0;
 
-        for(int i=0; i<size; i++) {
+        while (!pq.isEmpty()) {
             Node node = pq.poll();
 
             int to = find(node.to);
