@@ -33,9 +33,7 @@ public class AS1197 {
         int e = Integer.parseInt(st.nextToken());
 
         parent = new int[v+1];
-        for(int i = 1; i < v + 1; i++) {
-            parent[i] = i;
-        }
+        Arrays.setAll(parent, i -> i);
 
 
         for(int i = 0; i < e; i++) {
