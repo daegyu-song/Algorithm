@@ -6,6 +6,7 @@ class April28th {
     static int[][] arr;
     static int count = 1, result = 1;
     static int a = 0, b = 0;
+
     public int solution(int n, int w, int num) {
 
         arr = new int[n / w + 1][w];
