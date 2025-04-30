@@ -1,4 +1,4 @@
-package programmers;
+package programmers.lv1;
 
 // 프로그래머스 Lv.1 택배 상자 꺼내기
 class April28th {
