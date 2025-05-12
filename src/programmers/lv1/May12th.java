@@ -5,9 +5,9 @@ import java.util.*;
 // 프로그래머스 Lv.1 가장 많이 받은 선물
 class May12th {
 
-    private int[][] giftTable;
-    private int[] giftNum, prediction;
-    private int answer;
+    static int[][] giftTable;
+    static int[] giftNum, prediction;
+    static int answer;
 
     public int solution(String[] friends, String[] gifts) {
 
